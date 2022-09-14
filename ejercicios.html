@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /*
+        <p> 1) Programa una función que cuente el número de caracteres
+        de una cadena de texto, pe. miFuncion("Hola Mundo")
+        devolverá 10.</p>
+        */
+        /*con funcion declarada
+                function contarCadena(cadena = "") {
+                    if (!cadena) {
+                        console.log("Tu cadena esta vacia")
+        
+                    } else {
+                        console.log(`tu cadena tiene ${cadena.length} caracteres`)
+                    }
+                }
+        
+                contarCadena("Hola Mundo")
+        */
+
+        //con funcion expresada
+
+        const caracteres = (cadena = "") =>
+            (!cadena)
+                ? console.log("La cadena esta vacia")
+                : console.log(`la cadena tiene ${cadena.length} letras`)
+
+        caracteres()
+        caracteres("Hola Mundo")
+
+        /*
+        2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe.
+         miFuncion("Hola Mundo", 4) devolverá "Hola".
+        */
+        const cortarCaracteres = (cadena = "", longitud = undefined) =>
+
+            (!cadena)
+                ? console.warn("No pasaste ninguna cadena de texto")
+                : (longitud === undefined)   //concatena otro operador ternario
+                    ? console.warn("No pasaste ningun valor a recortar")
+                    : console.log(cadena.slice(0, longitud)) //0 es el caracter oficial y la longitud la que da el usuario
+
+
+
+        cortarCaracteres("Hola Mundo", 4)
+        cortarCaracteres("hola puto")
+        cortarCaracteres("", 5)
+
+
+        /*
+         3) Programa una función que dada una String te devuelva
+        un Array de textos separados por cierto caracter, pe.
+        miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+        */
+
+        const cadenaAArreglo = (cadena = "", separador = undefined) =>
+            (!cadena)
+                ? console.warn("No pasaste ninguna cadena de texto")
+                : (separador === undefined)
+                    ? console.warn("No ingresaste separador")
+                    : console.log(cadena.split(separador))
+
+
+        cadenaAArreglo("", '')
+        cadenaAArreglo("Hola que tal")
+        cadenaAArreglo("Hola que tal", " ")
+
+
+        /*
+        4) Programa una función que repita un texto X veces,
+        pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola
+        Mundo Hola Mundo.
+        */
+
+        const repetirPalabra = (cadena = "", repetir = undefined) =>
+            (!cadena)
+                ? console.log("la cadena esta vacia")
+                : (repetir === undefined)
+                    ? console.log("no ingresaste numero de repeticion")
+                    : console.log(cadena.repeat(repetir)) //CON ESTO SOLO BASTARIA
+
+        repetirPalabra("Hola mundo ", 3)
+
+
+        //ooooooooooooooooooooooooo
+
+        const repitiendo = (cadena = "", repetir = undefined) => {
+
+
+            if (!cadena) return console.log("no pusiste texto");
+            if (repetir === undefined) return console.log("No ingresaste numero de veces a repetir");
+            if (repetir === 0) return console.error(" 0 no puede utilizarse");
+            if (repetir === String) return console.log("No pueden usarse palabras como numero de veces a repetir");
+
+            for (let i = 0; i <= repetir; i++) console.info(`${cadena}, ${i}`) //i es menor igual a repetir....aumentar REPETIR LO DA EL USUARIO
+
+        }
+
+        repitiendo("Hola Mundo", 3)
+        repitiendo("hola mundo")
+        repitiendo("", 5)
+        repitiendo("hola mundo", -3)
+
+    </script>
+</body>
+
+</html>
