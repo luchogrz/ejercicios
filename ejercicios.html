@@ -113,6 +113,185 @@
         repitiendo("", 5)
         repitiendo("hola mundo", -3)
 
+         /*
+        Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá
+        "odnuM aloH".
+        */
+
+
+        const invertir = (texto = "") => {
+            if (!texto) console.log("no ingresaste ningun parametro");
+            if (texto) console.log(texto.split("").reverse().join(""));
+
+
+        }
+        invertir("Hola Mundo");
+
+        //ooooooooooooooooo
+        const invertirCadena = (texto = "") =>
+            (!texto)
+                ? console.log("no ingresaste caracteres")
+                : console.log(texto.split("").reverse().join(""))
+
+        invertirCadena("")
+        invertirCadena("Luciano Gorostizu")
+
+        /*
+        Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe.
+        miFuncion("hola mundo adios mundo", "mundo") devolverá 2. 
+        */
+
+        const contarPalabra = (cadena = "", texto = "") => {    //necesito dos parametros y validar opciones
+            if (!cadena) return console.log("No me pasaste ninguna cadena")
+            if (!texto) return console.log("No me pasaste ningun texto")
+
+            let i = 0,  //nos permite controlar el ciclo while
+                contador = 0; //nos permite contabilizar cuantas veces se repite una palabra 
+
+            while (i !== -1) { //cuando indexof no detecta el texto que queremos ....devuelve 
+                i = cadena.indexOf(texto, i)   //quiero que busque en la CADENA la palabra TEXTO y que arranque desde 0 (o sea I)
+
+                if (i !== -1) {    //SI i es diferente de -1 (encontro coincidencias), incrementar i y contador
+                    i++
+                    contador++
+                }
+
+            }
+
+            return console.log(`la palabra ${texto} se repite ${contador} veces`)
+        }
+        contarPalabra()
+        contarPalabra("Hola Mundo que tal mundo")
+        contarPalabra("", "mundo")
+        contarPalabra("Hola mundo que tal mundo", "mundo")
+
+
+
+        /*
+        Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido
+        que
+        en otro), pe. mifuncion("Salas") devolverá true.
+        */
+
+        //creamos const con la cadena vacia y aplicamos el IF si no pasamos parametros
+
+        const palindromo = (cadena = "") => {
+            if (!cadena) return console.log("No ingresaste ninguna cadena")
+
+            //conviene forzar convertir todo a mayusculas o minusculas
+            cadena = cadena.toLowerCase()
+
+            //crear variable y aplicar...
+            let alReves = cadena.split("").reverse().join("")
+            //esto nos devuelve que SI la cadena es igual a la variable  Caso verdadero, caso falso
+            return (cadena === alReves)
+                ? console.log("Si es Palindromo")
+                : console.log("No es Palindromo")
+
+        }
+
+        //llamamos a la funcion
+        palindromo("hOLA SOy Luciano")
+        palindromo("SaLAS")
+        palindromo()
+
+
+        /*
+        Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2,
+        xyz3,
+        xyz4 y xyz5", "xyz") devolverá "1, 2, 3, 4 y 5.
+        */
+
+        const eliminarPatron = (cadena = "", patron = "") =>
+            (!cadena)
+                ? console.log("No ingresaste Cadena")
+                : (!patron)
+                    ? console.log("No ingresaste ningun patron")
+
+                    //reemplaza cadena crea una expresion regular
+                    //patron I --> ELIMINA PATRON SIN IMPORTAR SI ES MAYUSCULA O MINISCULA
+                    //   G --> Ejecuta todas las posibilidades
+                    //   "" --> agregamos por lo que queremos reemplazar lo orinal ( "" ira vacio)
+                    : console.log(cadena.replace(new RegExp(patron, "ig"), ""))
+
+        eliminarPatron()
+        eliminarPatron("xyz1, xyz2,xyz3,xyz4 y xyz5, xyz", "xyz")
+        eliminarPatron("xyz1, xyz2,xyz3,xyz4 y xyz5, xyz")
+        eliminarPatron("Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, doloribus?", "o")
+
+
+
+        //9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+
+        const aleatorio = () => console.log(Math.round((Math.random() * 100)) + 500)
+        aleatorio()
+
+        //10) Programa una función que reciba un número y evalúe si es capicúa o no 
+        //(que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+
+        const capicua = (numero = 0) => {
+            //si el numero esta vacio retorna el mensaje de la consola
+            if (!numero) return console.warn("No ingresaste ningun numero")
+            //evaluacion de tipos de datos ingresados. SI numero (TYPEOF) no es numero retornar el mensaje de error
+            if (typeof numero !== "number") return console.error(`El valor ${numero} no es un numero`)
+
+            //hay que pasar el numero a string para que este pueda darse vuelta. TO STRING
+
+            numero = numero.toString()
+            let numeroAlReves = numero.split("").reverse().join("")
+
+            return (numero === numeroAlReves)
+                ? console.log(`Tu  numero ${numero}, ES capicua, numero al reves ${numeroAlReves}`)
+                : console.log(`Tu numero ${numero}, NO es capicua, numero al reves ${numeroAlReves}`)
+        }
+
+        capicua()
+        capicua("Hola")
+        capicua(3202458)
+        capicua(2002)
+        capicua(2000)
+        capicua(20.25)
+        capicua(212.212)
+
+        //11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el
+        //producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+
+        const factorial = (numero = undefined) => {
+
+            //Si el numero esta vacio retorna....
+            if (!numero === undefined) return console.log("No ingresaste ningun numero");
+
+            //Si el tipo de valor ingresado NO es un numero retorna...
+            if (typeof numero !== "number") return console.log(" El valor ingresado tiene que ser un numero");
+
+
+            //si el valor ingresado es CERO retorna...
+            if (numero === 0) return console.log("El numero no puede ser 0");
+
+            //Si el numero asignado es negativo retorna...
+            if (Math.sign(numero) === -1) return console.log("El numero no puede ser negativo");
+
+            //asignamos una variable factorial que empiece en UNO que es desde donde comenzaremos a multiplicar
+            let factorial = 1
+            //necesito multiplar todos los numereros desde 1 hasta el numero que me otorga el usuario
+            // se declara FOR , la variable i sera igual al numero otorgado
+            //mientras i sea mayor a 1
+            //i se resta en uno
+            //factorial es igual a factorial * i (por lo que en ese momento valga i)
+            for (let i = numero; i > 1; i--) {
+                factorial = factorial * i
+            }
+
+            return console.log(`El factorial de ${numero} es ${factorial}`)
+        }
+
+        factorial()
+        factorial("Hola")
+        factorial(-2)
+        factorial(5)
+        factorial(0)
+        factorial(8)
+
     </script>
 </body>
 
